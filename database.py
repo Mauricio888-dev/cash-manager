@@ -50,10 +50,10 @@ def calcular_dinero_en_cuenta(id_user):
     print(f"Dinero en cuenta del usuario {id_user}: {total}")
     return total
 
-registrar("Mau")
-añadir_registro("pago", 1, 500000, 1)
-calcular_dinero_en_cuenta(1)
+#registrar("Mau")
+#añadir_registro("pago", 1, 500000, 1)
+#calcular_dinero_en_cuenta(1)
 
-cursor.execute("SELECT * FROM usuarios")
-for fila in cursor.fetchall():
-    print(fila)
+#cursor.execute("SELECT * FROM usuarios")
+#for fila in cursor.fetchall():
+#    print(fila)

@@ -5,8 +5,12 @@ root.geometry("720x500")
 
 def dinero_en_cuenta():
     cantidad = database.calcular_dinero_en_cuenta(1)
-    return cantidad
-cantidad = dinero_en_cuenta()
+    saldo_var.set(f"{cantidad} pesos")
+
+    
+saldo_var = tk.StringVar()
+saldo_var.set("0")
+
 
 def nuevo_registro():
     ventana2 = tk.Tk()
@@ -30,11 +34,6 @@ def nuevo_registro():
     cantidad_lbl.pack()
     cantidad_input.pack()
 
-
-
-    
-
-    
     def registrar (): 
         valor_origen = origent_input.get()
         valor_añadido = añadido_input.get()
@@ -42,6 +41,7 @@ def nuevo_registro():
         if valor_origen == '' or valor_añadido=='' or  valor_cantidad== '':
             print("eta vaina e seria")
         database.añadir_registro(valor_origen, valor_añadido,  valor_cantidad, 1)
+        dinero_en_cuenta()
         ventana2.destroy()
 
     boton_registrar = tk.Button(ventana2, text="confirmar registro", command=registrar)
@@ -51,7 +51,7 @@ def nuevo_registro():
     
 
 header = tk.Frame(root)
-dinero = tk.Label(header, text=cantidad, fg="black", font=("Arial", 16))
+dinero = tk.Label(header, textvariable=saldo_var, fg="black", font=("Arial", 16))
 
 actualizar_dinero = tk.Button(root, text="Calcular dinero", command=dinero_en_cuenta)
 añadir_registro = tk.Button(root, text="Añadir registro", command=nuevo_registro)
